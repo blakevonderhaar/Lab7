@@ -23,7 +23,7 @@ class EntryPage extends HTMLElement {
             }
 
             .entry-image {
-                grid-area: img
+                grid-area: img;
                 height: 100%;
                 align-self: center;
                 justify-self: center;

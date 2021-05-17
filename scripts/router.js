@@ -35,4 +35,37 @@ router.setState = function() {
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
    */
+
+  if(window.location.hash.localeCompare('#settings') == 0){
+    document.querySelector("body").className = "settings";
+    document.querySelector("header h1").innerHTML = "Settings";
+  }
+  else if (window.location.hash.localeCompare("") == 0){
+    document.querySelector("body").className = " ";
+    document.querySelector("header h1").innerHTML = "Journal Entries";
+  }
+  else if (window.location.hash.includes("entry")){
+    document.querySelector("body").className = "single-entry";
+    document.querySelector("header h1").innerHTML = window.location.hash.replace("#", "");
+
+    let index = Number(window.location.hash.replace("#entry", ""));
+    
+    /*
+    fetch('https://cse110lab6.herokuapp.com/entries')
+    .then(response => response.json())
+    .then(entries => {
+      document.querySelector("entry-page").remove();
+      let newEntry = document.createElement('entry-page');
+      newEntry.entry = entries[index];
+      document.querySelector("body").appendChild(newEntry);
+    });
+    */
+    document.querySelector("entry-page").remove();
+    let newEntry = document.createElement('entry-page');
+    newEntry.entry = document.querySelector("main").children[index].entry;
+    document.querySelector("body").appendChild(newEntry);
+
+    
+  }
+
 }
