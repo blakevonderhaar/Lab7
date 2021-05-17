@@ -46,9 +46,13 @@ router.setState = function() {
   }
   else if (window.location.hash.includes("entry")){
     document.querySelector("body").className = "single-entry";
-    document.querySelector("header h1").innerHTML = window.location.hash.replace("#", "");
 
     let index = Number(window.location.hash.replace("#entry", ""));
+    let entryTitle = "Entry " + index;
+    
+    document.querySelector("header h1").innerHTML = entryTitle;
+
+    
     
     /*
     fetch('https://cse110lab6.herokuapp.com/entries')
